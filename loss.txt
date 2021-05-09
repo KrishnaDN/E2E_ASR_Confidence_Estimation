@@ -1,0 +1,58 @@
+Loss at epoch 0 and iteration 0 is 8.459541320800781
+NCE Loss at epoch 0 and iteration 0 is -1.83224356174469
+Loss at epoch 0 and iteration 500 is 0.21942299604415894
+NCE Loss at epoch 0 and iteration 500 is 0.9422569870948792
+Loss at epoch 0 and iteration 1000 is 0.309315949678421
+NCE Loss at epoch 0 and iteration 1000 is 0.9076706767082214
+Loss at epoch 1 and iteration 0 is 0.3192955553531647
+NCE Loss at epoch 1 and iteration 0 is 0.9136960506439209
+Loss at epoch 1 and iteration 500 is 0.24892298877239227
+NCE Loss at epoch 1 and iteration 500 is 0.9285743832588196
+Loss at epoch 1 and iteration 1000 is 0.39308151602745056
+NCE Loss at epoch 1 and iteration 1000 is 0.8434872627258301
+Loss at epoch 2 and iteration 0 is 0.21853648126125336
+NCE Loss at epoch 2 and iteration 0 is 0.9423962235450745
+Loss at epoch 2 and iteration 500 is 0.2544032633304596
+NCE Loss at epoch 2 and iteration 500 is 0.9327383637428284
+Loss at epoch 2 and iteration 1000 is 0.20018397271633148
+NCE Loss at epoch 2 and iteration 1000 is 0.9492928385734558
+Loss at epoch 3 and iteration 0 is 0.17454764246940613
+NCE Loss at epoch 3 and iteration 0 is 0.9549375772476196
+Loss at epoch 3 and iteration 500 is 0.20002499222755432
+NCE Loss at epoch 3 and iteration 500 is 0.944087564945221
+Loss at epoch 3 and iteration 1000 is 0.1715901494026184
+NCE Loss at epoch 3 and iteration 1000 is 0.952203094959259
+Loss at epoch 4 and iteration 0 is 0.2163582146167755
+NCE Loss at epoch 4 and iteration 0 is 0.9426972270011902
+Loss at epoch 4 and iteration 500 is 0.21628646552562714
+NCE Loss at epoch 4 and iteration 500 is 0.9439439177513123
+Loss at epoch 4 and iteration 1000 is 0.3176601827144623
+NCE Loss at epoch 4 and iteration 1000 is 0.8850768208503723
+Loss at epoch 5 and iteration 0 is 0.17399410903453827
+NCE Loss at epoch 5 and iteration 0 is 0.9549916982650757
+Loss at epoch 5 and iteration 500 is 0.17230230569839478
+NCE Loss at epoch 5 and iteration 500 is 0.9571143388748169
+Loss at epoch 5 and iteration 1000 is 0.1885177493095398
+NCE Loss at epoch 5 and iteration 1000 is 0.9512752294540405
+Loss at epoch 6 and iteration 0 is 0.2331095188856125
+NCE Loss at epoch 6 and iteration 0 is 0.9326226711273193
+Loss at epoch 6 and iteration 500 is 0.19996899366378784
+NCE Loss at epoch 6 and iteration 500 is 0.9493129849433899
+Loss at epoch 6 and iteration 1000 is 0.20262832939624786
+NCE Loss at epoch 6 and iteration 1000 is 0.9485535621643066
+Loss at epoch 7 and iteration 0 is 0.2438020259141922
+NCE Loss at epoch 7 and iteration 0 is 0.9353046417236328
+Loss at epoch 7 and iteration 500 is 0.21970249712467194
+NCE Loss at epoch 7 and iteration 500 is 0.9417467713356018
+Loss at epoch 7 and iteration 1000 is 0.2401810586452484
+NCE Loss at epoch 7 and iteration 1000 is 0.9362833499908447
+Loss at epoch 8 and iteration 0 is 0.2156744748353958
+NCE Loss at epoch 8 and iteration 0 is 0.9429130554199219
+Loss at epoch 8 and iteration 500 is 0.1990634948015213
+NCE Loss at epoch 8 and iteration 500 is 0.949444591999054
+Loss at epoch 8 and iteration 1000 is 0.2460223287343979
+NCE Loss at epoch 8 and iteration 1000 is 0.9255239963531494
+Loss at epoch 9 and iteration 0 is 0.24021178483963013
+NCE Loss at epoch 9 and iteration 0 is 0.9401178359985352
+Loss at epoch 9 and iteration 500 is 0.18799225986003876
+NCE Loss at epoch 9 and iteration 500 is 0.9473717212677002
