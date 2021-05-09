@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue May  4 11:46:50 2021
+
+@author: krishna
+"""
+
 
 from __future__ import print_function
 
@@ -15,7 +23,6 @@ import torch.nn as nn
 import numpy as np
 from torch import optim
 from alignment import wagner_fischer, align, naive_backtrace
-
 import json
 import numpy as np
 import random
