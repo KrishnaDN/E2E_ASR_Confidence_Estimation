@@ -139,10 +139,10 @@ def make_loader(data_folder, preproc,
 
 
 def normalized_cross_entropy(c,p):
-    H_p = torch.mean(Categorical(probs = p).entropy())
+    H_c = torch.mean(Categorical(probs = c).entropy())
     criterion = nn.BCELoss()
     H_c_p =criterion(p, c.float())
-    nce = (H_p - H_c_p)/H_p
+    nce = (H_c - H_c_p)/H_c
     return nce
         
 
