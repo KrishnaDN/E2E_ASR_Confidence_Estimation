@@ -141,13 +141,55 @@ def make_loader(data_folder, preproc,
 def normalized_cross_entropy(c,p):
     H_p = torch.mean(Categorical(probs = p).entropy())
     criterion = nn.BCELoss()
-    H_c_p =criterion(predictions, labels.float())
+    H_c_p =criterion(p, c.float())
     nce = (H_p - H_c_p)/H_p
     return nce
-    
+        
 
 
-     
+def train(args,confidence_model):
+    nce_list = list()
+    for epoch in range(args.epochs):
+        for batch_idx, (feats,labels)  in enumerate(train_loader):
+            feats = feats.to(device)
+            labels = labels.to(device)
+            labels = 1-labels
+            predictions = confidence_model(feats).squeeze(2)
+            loss =criterion(predictions, labels.float())
+            optimizer.zero_grad()
+            loss.backward()
+            optimizer.step()
+            nce_val = normalized_cross_entropy(labels, predictions)
+            nce_list.append(nce_val.item())
+            if batch_idx%500==0:
+                print(f'Loss at epoch {epoch} and iteration {batch_idx} is {loss.item()}')
+                print(f'NCE Loss at epoch {epoch} and iteration {batch_idx} is {nce_val.item()}')
+                
+            
+            nce_val = normalized_cross_entropy(labels, predictions)
+            nce_list.append(nce_val.item())
+        print(f'Mean NCE loss {np.mean(nce_list)}')
+
+
+
+def evaluation(args,confidence_model):
+    nce_list = list()
+    confidence_model.eval()
+    with torch.no_grad():
+        for batch_idx, (feats,labels)  in enumerate(train_loader):
+            feats = feats.to(device)
+            labels = labels.to(device)
+            labels = 1-labels
+            predictions = confidence_model(feats).squeeze(2)
+            loss =criterion(predictions, labels.float())
+            nce_val = normalized_cross_entropy(labels, predictions)
+            nce_list.append(nce_val.item())
+            nce_val = normalized_cross_entropy(labels, predictions)
+            nce_list.append(nce_val.item())
+        print(f'Mean test NCE loss {np.mean(nce_list)}')
+
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
         description='use ctc to generate alignment')
@@ -168,45 +210,21 @@ if __name__ == '__main__':
                 collate_fn=collate_fun,
                 drop_last=True)
     
-    #test_dataset = SpeechDataGenerator(args.test_folder,
-    #                       args.batch_size)
-    #test_sampler = BatchRandomSampler(test_dataset, args.batch_size)
-    #train_loader = tud.DataLoader(train_dataset,
-    #            batch_size=args.batch_size,
-    #            sampler=test_sampler,
-    #            collate_fn=collate_fun,
-    #            drop_last=True)
+    test_dataset = SpeechDataGenerator(args.test_folder,
+                           args.batch_size)
+    test_sampler = BatchRandomSampler(test_dataset, args.batch_size)
+    test_loader = tud.DataLoader(train_dataset,
+                batch_size=args.batch_size,
+                sampler=test_sampler,
+                collate_fn=collate_fun,
+                drop_last=True)
     
     use_cuda=True
     device = torch.device('cuda' if use_cuda else 'cpu')
     confidence_model = ConfidanceModel().to(device)
     criterion = nn.BCELoss().to(device)
     optimizer = optim.Adam(confidence_model.parameters(), lr=0.001, weight_decay=1e-05, betas=(0.9, 0.98), eps=1e-9)
-    
-    nce_list = list()
-    gt_list = list()
-    pred_list = list()
-    
-    for epoch in range(args.epochs):
-        for batch_idx, (feats,labels)  in enumerate(train_loader):
-    
-            feats = feats.to(device)
-            labels = labels.to(device)
-            labels = 1-labels
-            predictions = confidence_model(feats).squeeze(2)
-            loss =criterion(predictions, labels.float())
-            optimizer.zero_grad()
-            loss.backward()
-            optimizer.step()
-            nce_val = normalized_cross_entropy(labels, predictions)
-            nce_list.append(nce_val.item())
-            if batch_idx%500==0:
-                print(f'Loss at epoch {epoch} and iteration {batch_idx} is {loss.item()}')
-                print(f'NCE Loss at epoch {epoch} and iteration {batch_idx} is {nce_val.item()}')
-                
-            
-            nce_val = normalized_cross_entropy(labels, predictions)
-            nce_list.append(nce_val.item())
-    print(f'Mean NCE loss {np.mean(nce_list)}')
+    train(args, confidence_model)
+    evaluation(args, confidence_model)
     
     
