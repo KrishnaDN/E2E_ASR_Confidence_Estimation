@@ -166,8 +166,6 @@ def train(args,confidence_model):
                 print(f'NCE Loss at epoch {epoch} and iteration {batch_idx} is {nce_val.item()}')
                 
             
-            nce_val = normalized_cross_entropy(labels, predictions)
-            nce_list.append(nce_val.item())
         print(f'Mean NCE loss {np.mean(nce_list)}')
 
 
@@ -184,8 +182,7 @@ def evaluation(args,confidence_model):
             loss =criterion(predictions, labels.float())
             nce_val = normalized_cross_entropy(labels, predictions)
             nce_list.append(nce_val.item())
-            nce_val = normalized_cross_entropy(labels, predictions)
-            nce_list.append(nce_val.item())
+           
         print(f'Mean test NCE loss {np.mean(nce_list)}')
 
 
